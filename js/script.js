@@ -295,95 +295,91 @@ fetch(SCRIPT_URL)
 .then(data=>{
 
 
-let container =
+let table =
 document.getElementById("rekod");
 
 
-container.innerHTML = "";
+
+table.innerHTML = `
+
+<tr>
+
+<th>Kelas</th>
+
+<th>Murid</th>
+
+<th>Hadir</th>
+
+<th>Tidak Hadir</th>
+
+<th>%</th>
+
+<th>Tindakan</th>
+
+</tr>
+
+`;
 
 
 
 data.forEach(item=>{
 
 
-container.innerHTML += `
+table.innerHTML += `
+
+<tr>
 
 
-<div class="rekod-card">
+<td>
+<b>${item.kelas}</b>
+</td>
 
 
-<div class="rekod-header">
+<td>
+${item.jumlah}
+</td>
 
 
-<h3>
-🏫 ${item.kelas}
-</h3>
+<td class="hadir-text">
+${item.hadir}
+</td>
 
 
-<span>
+<td class="tidak-text">
+${item.tidakHadir}
+</td>
+
+
+<td>
+
+<span class="peratus-badge">
+
 ${item.peratus}%
+
 </span>
 
-
-</div>
-
+</td>
 
 
-<div class="rekod-detail">
+<td>
 
 
-<div>
+<button 
+class="edit-btn"
+onclick="editKelas('${item.kelas}',${item.hadir})">
 
-<small>Murid</small>
-
-<b>
-${item.jumlah}
-</b>
-
-</div>
-
-
-
-<div>
-
-<small>Hadir</small>
-
-<b class="hadir-text">
-${item.hadir}
-</b>
-
-</div>
-
-
-
-<div>
-
-<small>Tidak hadir</small>
-
-<b class="tidak-text">
-${item.tidakHadir}
-</b>
-
-</div>
-
-
-</div>
-
-
-
-<button onclick="editKelas('${item.kelas}',${item.hadir})">
-
-✏️ EDIT
+✏️
 
 </button>
 
 
+</td>
 
-</div>
+
+</tr>
 
 
 `;
-
 
 });
 
