@@ -5,7 +5,7 @@ const SCRIPT_URL =
 const jumlahMurid = {
 
     // Tingkatan 1
-    "1 Mawar": 35,
+    "1 Mawar": 30,
     "1 Melati": 30,
     "1 Melur": 34,
 
